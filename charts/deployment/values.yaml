@@ -19,7 +19,7 @@ fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
-  create: true
+  create: false
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
@@ -40,6 +40,8 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
+  # Specifies whether a service should be created
+  create: false
   type: ClusterIP
   port: 80
 
