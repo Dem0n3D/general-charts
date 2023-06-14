@@ -39,6 +39,19 @@ spec:
           {{- if .Values.args }}
           args: {{ .Values.args }}
           {{- end }}
+          {{- with .Values.env }}
+          env:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            {{- range .Values.envFromConfigMap }}
+            - configMapRef:
+                name: {{ include "deployment.fullname" $ }}-{{ . }}
+            {{- end }}
+            {{- range .Values.envFromSecrets }}
+            - secretRef:
+                name: {{ include "deployment.fullname" $ }}-{{ . }}
+            {{- end }}
           {{- if .Values.service.create -}}
           ports:
             - name: http
