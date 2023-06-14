@@ -53,7 +53,7 @@ spec:
             - secretRef:
                 name: {{ include "deployment.fullname" $ }}-{{ . }}
             {{- end }}
-          {{ end }}
+          {{- end }}
           {{- if .Values.service.create }}
           ports:
             - name: http
