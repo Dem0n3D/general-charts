@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   deployment:
   - apiVersion: v2
+    created: "2023-06-16T12:42:34.322785376Z"
+    description: A Helm chart for Kubernetes
+    digest: 6125cdd349a82a2750b452b9b7674fbb1d07d9103dfdcc871ff4e4a87a311a77
+    name: deployment
+    type: application
+    urls:
+    - https://github.com/Dem0n3D/general-charts/releases/download/deployment-0.7.0/deployment-0.7.0.tgz
+    version: 0.7.0
+  - apiVersion: v2
     created: "2023-06-15T10:38:19.977707133Z"
     description: A Helm chart for Kubernetes
     digest: a8929c52d86c220e900578d1633821af737f8370edfd6e7400f5abe16f58aa93
@@ -91,4 +100,4 @@ entries:
     urls:
     - https://github.com/Dem0n3D/general-charts/releases/download/deployment-0.0.3/deployment-0.0.3.tgz
     version: 0.0.3
-generated: "2023-06-15T10:38:19.977970233Z"
+generated: "2023-06-16T12:42:34.323138672Z"
