@@ -47,11 +47,11 @@ spec:
           envFrom:
             {{- range .Values.envFromConfigMap }}
             - configMapRef:
-                name: {{ .Release.Name }}-{{ . }}
+                name: {{ $.Release.Name }}-{{ . }}
             {{- end }}
             {{- range .Values.envFromSecrets }}
             - secretRef:
-                name: {{ .Release.Name }}-{{ . }}
+                name: {{ $.Release.Name }}-{{ . }}
             {{- end }}
           {{- end }}
           {{- if .Values.service.create }}
