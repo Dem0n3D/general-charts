@@ -34,11 +34,13 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Values.global.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.command }}
-          command: {{ .Values.command }}
-          {{ end }}
+          command:
+            {{- toYaml .Values.command | nindent 12}}
+          {{- end }}
           {{- if .Values.args }}
-          args: {{ .Values.args }}
-          {{ end }}
+          args:
+            {{- toYaml .Values.args | nindent 12}}
+          {{- end }}
           {{- with .Values.env }}
           env:
             {{- toYaml . | nindent 12 }}
