@@ -94,13 +94,13 @@ spec:
           {{- toYaml . | nindent 8 }}
         {{- end }}
         {{- range .Values.configMapVolumes }}
-          - name: {{ .name }}
-            configMap:
-              name: {{ $.Release.Name }}-{{ .configMap }}
+        - name: {{ .name }}
+          configMap:
+            name: {{ $.Release.Name }}-{{ .configMap }}
         {{- end }}
         {{- range .Values.secretVolumes }}
-          - name: {{ .name }}
-            secret:
-              secretName: {{ $.Release.Name }}-{{ .configMap }}
+        - name: {{ .name }}
+          secret:
+            secretName: {{ $.Release.Name }}-{{ .configMap }}
         {{- end }}
       {{- end }}
