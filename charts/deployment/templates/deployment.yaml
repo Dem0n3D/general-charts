@@ -91,7 +91,7 @@ spec:
       {{- if or .Values.volumes .Values.configMapVolumes .Values.secretVolumes }}
       volumes:
         {{- with .Values.volumes }}
-          - {{- toYaml . | nindent 8 }}
+          {{- toYaml . | nindent 8 }}
         {{- end }}
         {{- range .Values.configMapVolumes }}
           - name: {{ .name }}
