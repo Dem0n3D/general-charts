@@ -88,7 +88,19 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.volumes }}
+      {{- if or .Values.volumes .Values.configMapVolumes .Values.secretVolumes }}
       volumes:
-        {{- toYaml . | nindent 8 }}
+        {{- with .Values.volumes }}
+          - {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- range .Values.configMapVolumes }}
+          - name: {{ .name }}
+            configMap:
+              name: {{ $.Release.Name }}-{{ .configMap }}
+        {{- end }}
+        {{- range .Values.secretVolumes }}
+          - name: {{ .name }}
+            secret:
+              secretName: {{ $.Release.Name }}-{{ .configMap }}
+        {{- end }}
       {{- end }}

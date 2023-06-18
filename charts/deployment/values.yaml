@@ -93,3 +93,5 @@ affinity: {}
 env: {}
 envFromConfigMap: []
 envFromSecrets: []
+configMapVolumes: []
+secretVolumes: []
