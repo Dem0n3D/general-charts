@@ -44,7 +44,7 @@ spec:
           {{- with .Values.env }}
           env:
             {{- toYaml . | nindent 12 }}
-          {{ end }}
+          {{- end }}
           {{- if or .Values.envFromConfigMap .Values.envFromSecrets }}
           envFrom:
             {{- range .Values.envFromConfigMap }}
@@ -88,7 +88,7 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- if or .Values.volumes .Values.configMapVolumes .Values.secretVolumes }}
+      {{- if or .Values.volumes .Values.configMapVolumes .Values.secretVolumes .Values.persistedVolumes }}
       volumes:
         {{- with .Values.volumes }}
           {{- toYaml . | nindent 8 }}
