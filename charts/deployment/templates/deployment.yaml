@@ -93,6 +93,11 @@ spec:
         {{- with .Values.volumes }}
           {{- toYaml . | nindent 8 }}
         {{- end }}
+        {{- range .Values.persistedVolumes }}
+        - name: {{ .name }}
+          persistentVolumeClaim:
+            claimName: {{ $.Release.Name }}-{{ .claimName }}
+        {{- end }}
         {{- range .Values.configMapVolumes }}
         - name: {{ .name }}
           configMap:
