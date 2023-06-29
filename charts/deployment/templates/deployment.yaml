@@ -61,7 +61,7 @@ spec:
             {{- range .Values.service.ports }}
             - name: {{ .name }}
               containerPort: {{ .containerPort | default .port }}
-              protocol: {{ .protocol }}
+              protocol: {{ .protocol | default "TCP" }}
             {{- end }}
           {{- end }}
           {{- with .Values.livenessProbe }}

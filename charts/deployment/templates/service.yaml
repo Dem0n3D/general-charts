@@ -12,7 +12,7 @@ spec:
     - name: {{ .name }}
       port: {{ .port }}
       targetPort: {{ .name }}
-      protocol: {{ .protocol }}
+      protocol: {{ .protocol | default "TCP" }}
     {{- end }}
   selector:
     {{- include "deployment.selectorLabels" . | nindent 4 }}
