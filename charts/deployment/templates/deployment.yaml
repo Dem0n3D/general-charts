@@ -58,9 +58,11 @@ spec:
           {{- end }}
           {{- if .Values.service.create }}
           ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
-              protocol: TCP
+            {{- range .Values.service.ports }}
+            - name: {{ .name }}
+              containerPort: {{ .containerPort | default .port }}
+              protocol: {{ .protocol }}
+            {{- end }}
           {{- end }}
           {{- with .Values.livenessProbe }}
           livenessProbe:

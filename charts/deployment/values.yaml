@@ -46,7 +46,7 @@ service:
   # Specifies whether a service should be created
   create: false
   type: ClusterIP
-  port: 80
+  ports: []
 
 ingress:
   enabled: false
