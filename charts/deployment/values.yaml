@@ -11,10 +11,11 @@ global:
 replicaCount: 1
 
 image:
-  repository: nginx
+  registry: ""
+  name: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -44,9 +45,13 @@ securityContext: {}
 
 service:
   # Specifies whether a service should be created
-  create: false
+  create: true
   type: ClusterIP
-  ports: []
+  ports:
+    - name: http
+      port: 8042
+    - name: dicom
+      port: 4242
 
 ingress:
   enabled: false
