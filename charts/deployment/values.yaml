@@ -4,6 +4,8 @@
 
 global:
   image: {}
+  labels: {}
+  podLabels: {}
 
 #args: []
 #command: []
