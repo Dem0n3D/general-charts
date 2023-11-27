@@ -1,3 +1,4 @@
+{{- $image := .Values.global.image | default dict -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -31,12 +32,12 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          {{- if .Values.image.registry | default .Values.global.image.registry }}
-          image: "{{ .Values.image.registry | default .Values.global.image.registry }}/{{ .Values.image.name | default .Values.global.image.name }}:{{ .Values.image.tag | default .Values.global.image.tag }}"
+          {{- if .Values.image.registry | default $image.registry }}
+          image: "{{ .Values.image.registry | default $image.registry }}/{{ .Values.image.name | default $image.name }}:{{ .Values.image.tag | default $image.tag }}"
           {{- else }}
-          image: "{{ .Values.image.name | default .Values.global.image.name }}:{{ .Values.image.tag | default .Values.global.image.tag }}"
+          image: "{{ .Values.image.name | default $image.name }}:{{ .Values.image.tag | default $image.tag }}"
           {{- end }}
-          imagePullPolicy: {{ .Values.image.pullPolicy | default .Values.global.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.image.pullPolicy | default $image.pullPolicy }}
           {{- if .Values.command }}
           command:
             {{- toYaml .Values.command | nindent 12}}

@@ -34,7 +34,7 @@ Create chart name and version as used by the chart label.
 Common labels
 */}}
 {{- define "deployment.labels" -}}
-{{- $labels := deepCopy $.Values.global.labels | merge $.Values.labels -}}
+{{- $labels := $.Values.global.labels | default dict | deepCopy | merge $.Values.labels -}}
 helm.sh/chart: {{ include "deployment.chart" . }}
 {{- if $labels }}
 {{ toYaml $labels }}
@@ -58,7 +58,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Pod labels
 */}}
 {{- define "deployment.podLabels" -}}
-{{- $podLabels := deepCopy $.Values.global.podLabels | merge $.Values.podLabels -}}
+{{- $podLabels := $.Values.global.podLabels | default dict | deepCopy | merge $.Values.podLabels -}}
 {{ include "deployment.selectorLabels" . }}
 {{- if $podLabels }}
 {{ toYaml $podLabels }}
