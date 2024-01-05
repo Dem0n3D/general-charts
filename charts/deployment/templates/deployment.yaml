@@ -113,6 +113,6 @@ spec:
         {{- range .Values.secretVolumes }}
         - name: {{ .name }}
           secret:
-            secretName: {{ $.Release.Name }}-{{ .configMap }}
+            secretName: {{ $.Release.Name }}-{{ .secret }}
         {{- end }}
       {{- end }}
