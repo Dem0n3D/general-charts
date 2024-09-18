@@ -15,6 +15,7 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+annotations: {}
 labels: {}
 podLabels: {}
 
