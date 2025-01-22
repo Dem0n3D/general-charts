@@ -64,6 +64,14 @@ spec:
             - secretRef:
                 name: {{ $.Release.Name }}-{{ . }}
             {{- end }}
+            {{- range .Values.envFromExtraConfigMap }}
+            - configMapRef:
+                name: {{ . }}
+            {{- end }}
+            {{- range .Values.envFromExtraSecrets }}
+            - secretRef:
+                name: {{ . }}
+            {{- end }}
           {{- end }}
           {{- if .Values.service.create }}
           ports:
